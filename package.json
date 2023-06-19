@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "camelcase-keys": "^8.0.2",
+    "dotenv-safe": "^8.2.0",
     "next": "^13.4.6",
+    "postgres": "^3.3.5",
     "sass": "^1.63.4",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/dotenv-safe": "^8.1.2",
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "eslint-config-upleveled": "^4.7.2",
