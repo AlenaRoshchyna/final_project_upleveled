@@ -1,6 +1,7 @@
 'use client';
 
 import { Route } from 'next';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
@@ -38,29 +39,46 @@ export default function LoginForm(props: Props) {
   }
 
   return (
-    <main className={styles.main}>
-      <h4 className={styles.titel}>Please, login.</h4>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <label>
-          username:
-          <input
-            value={username}
-            onChange={(event) => setUsername(event.currentTarget.value)}
-          />
-        </label>
-        <label>
-          password:
-          <input
-            value={password}
-            type="password"
-            onChange={(event) => setPassword(event.currentTarget.value)}
-          />
-        </label>
-        <button className={styles.button} onClick={async () => await login()}>
-          log in
-        </button>
-        {error !== '' && <div className={styles.error}>{error}</div>}
-      </form>
-    </main>
+    <div className={styles.loginContainer}>
+      <div className={styles.form}>
+        <h4 className={styles.titel}>Please, login.</h4>
+
+        <form
+          onSubmit={(event) => event.preventDefault()}
+          className={styles.loginForm}
+        >
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.currentTarget.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="username">Password:</label>
+            <input
+              value={password}
+              type="password"
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </div>
+          <button
+            className={styles.loginSubmit}
+            onClick={async () => await login()}
+          >
+            log in
+          </button>
+          {error !== '' && <div className={styles.error}>{error}</div>}
+        </form>
+      </div>
+      <div className={styles.signupContainer}>
+        <p>
+          Don't have an account yet?
+          <Link href="/register" className={styles.registerLink}>
+            Register here
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 }

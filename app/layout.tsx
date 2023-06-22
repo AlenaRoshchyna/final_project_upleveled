@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: Props) {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/pictures">Gallery</Link>
+                <Link href="/artworks">Gallery</Link>
               </li>
               <li>
                 <Link href="/wishlist">Wishlist</Link>
