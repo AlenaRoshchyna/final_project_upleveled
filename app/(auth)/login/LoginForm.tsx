@@ -3,8 +3,8 @@
 import { Route } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { getSafeReturnToPath } from '../../../util/validation';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
+import { getSafeReturnToPath } from '../../util/validation';
 import styles from './LoginForm.module.scss';
 
 type Props = { returnTo?: string | string[] };
@@ -38,26 +38,29 @@ export default function LoginForm(props: Props) {
   }
 
   return (
-    <form onSubmit={(event) => event.preventDefault()}>
-      <label>
-        username:
-        <input
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          value={password}
-          type="password"
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button className={styles.button} onClick={async () => await login()}>
-        log in
-      </button>
-      {error !== '' && <div className={styles.error}>{error}</div>}
-    </form>
+    <main className={styles.main}>
+      <h4 className={styles.titel}>Please, login.</h4>
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label>
+          username:
+          <input
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+          />
+        </label>
+        <label>
+          password:
+          <input
+            value={password}
+            type="password"
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+        </label>
+        <button className={styles.button} onClick={async () => await login()}>
+          log in
+        </button>
+        {error !== '' && <div className={styles.error}>{error}</div>}
+      </form>
+    </main>
   );
 }

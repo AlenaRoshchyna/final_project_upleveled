@@ -1,8 +1,11 @@
 import './globals.css';
 import { Almendra } from 'next/font/google';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getUserBySessionToken } from '../database/users';
 import logo from '../public/logo.png';
+import { LogoutButton } from './components/LogoutButton';
 import styles from './layout.module.scss';
 
 const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
@@ -12,7 +15,19 @@ export const metadata = {
   description: 'World of Wada artist',
 };
 
-export default function RootLayout({ children }) {
+type Props = {
+  children: import('react').ReactNode;
+};
+
+export default async function RootLayout({ children }: Props) {
+  // 1. get the session token from the cookie
+  const cookieStore = cookies();
+  const sessionToken = cookieStore.get('sessionToken');
+
+  const user = !sessionToken?.value
+    ? undefined
+    : await getUserBySessionToken(sessionToken.value);
+
   return (
     <html lang="en">
       <body>
@@ -35,14 +50,22 @@ export default function RootLayout({ children }) {
                 <Link href="/wishlist">Wishlist</Link>
               </li>
             </ul>
-            <ul className={almendra.className}>
-              <li>
-                <Link href="/register">Register</Link>
-              </li>
-              <li>
-                <Link href="/login">Log in</Link>
-              </li>
-            </ul>
+
+            {user ? (
+              <>
+                <div>{user.username}</div>
+                <LogoutButton />
+              </>
+            ) : (
+              <ul className={almendra.className}>
+                <li>
+                  <Link href="/register">Register</Link>
+                </li>
+                <li>
+                  <Link href="/login">Log in</Link>
+                </li>
+              </ul>
+            )}
           </nav>
         </header>
         <main>{children}</main>
