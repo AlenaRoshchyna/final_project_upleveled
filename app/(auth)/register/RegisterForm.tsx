@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
@@ -26,44 +27,57 @@ export default function RegisterForm() {
     }
 
     console.log(data.user);
-    router.push(`/profile/${data.user.username}`)
+    router.push(`/profile/${data.user.username}`);
     // we may have in the future revalidatePath()
     router.refresh();
   }
 
   return (
-    <main className={styles.main}>
-      <h4 className={styles.titel}>Please, register.</h4>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <label>
-          username:
-          <input
-            value={username}
-            onChange={(event) => setUsername(event.currentTarget.value)}
-          />
-        </label>
-        <label>
-          password:
-          <input
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
-          />
-        </label>
-        <label>
-          e-mail:
-          <input
-            value={email}
-            onChange={(event) => setEmail(event.currentTarget.value)}
-          />
-        </label>
-        <button
-          className={styles.button}
-          onClick={async () => await register()}
+    <div className={styles.loginContainer}>
+      <div className={styles.form}>
+        <h4 className={styles.title}>Please, register.</h4>
+        <form
+          className={styles.loginForm}
+          onSubmit={(event) => event.preventDefault()}
         >
-          sign up
-        </button>
-        {error !== '' && <div className={styles.error}>{error}</div>}
-      </form>
-    </main>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.currentTarget.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="username">Password:</label>
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="e-mail">E-mail:</label>
+            <input
+              value={email}
+              onChange={(event) => setEmail(event.currentTarget.value)}
+            />
+          </div>
+          <button
+            className={styles.loginSubmit}
+            onClick={async () => await register()}
+          >
+            sign up
+          </button>
+          {error !== '' && <div className={styles.error}>{error}</div>}
+          <div className={styles.signupContainer}>
+            <p>
+              Have an account yet?
+              <Link href="/login" className={styles.loginLink}>
+                Log in here
+              </Link>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

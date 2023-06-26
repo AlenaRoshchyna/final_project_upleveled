@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation';
 import { getUserByUsername } from '../../../database/users';
+import styles from './page.module.scss';
+
+// import styles from './page.module.scss';
 
 type Props = {
   params: { username: string };
@@ -13,9 +16,9 @@ export default async function ProfileUsernamePage({ params }: Props) {
   }
 
   return (
-    <>
+    <main className={styles.id}>
       <div>id: {user.id}</div>
       <div>username: {user.username}</div>
-    </>
+    </main>
   );
 }

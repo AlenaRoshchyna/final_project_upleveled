@@ -27,10 +27,10 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<LoginResponseBodyPost>> {
   const body = await request.json();
-
+  console.log({ body });
   // 1. get the credentials from the body
   const result = userSchema.safeParse(body);
-
+  console.log({ result });
   // 2. verify the user data and check that the name is not taken
   if (!result.success) {
     // zod send you details about the error
@@ -47,8 +47,9 @@ export async function POST(
   const userWithPasswordHash = await getUserWithPasswordHashByUsername(
     result.data.username,
   );
-
+  console.log({ userWithPasswordHash });
   if (!userWithPasswordHash) {
+    console.log(userWithPasswordHash);
     // zod send you details about the error
     // console.log(result.error);
     return NextResponse.json(

@@ -1,0 +1,29 @@
+// .main {
+//   background-color: black;
+//   height: 100%;
+// }
+
+.productsContainer {
+  padding-top: 90px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: rgb(255, 255, 255);
+  justify-content: space-between;
+  grid-gap: 10px;
+  gap: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 200px;
+
+  .img:hover {
+    border: 1px solid #777;
+  }
+}
+
+.titel {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: rgb(255, 255, 255);
+}

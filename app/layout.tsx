@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: Props) {
 
             {user ? (
               <>
-                <div>{user.username}</div>
+                <div className={styles.username}>{user.username}</div>
                 <LogoutButton />
               </>
             ) : (

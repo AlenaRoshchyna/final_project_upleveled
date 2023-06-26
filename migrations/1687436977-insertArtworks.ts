@@ -28,7 +28,7 @@ export const artworks = [
   {
     id: 4,
     name: 'Simplicity Revealed',
-    url: '50',
+    url: 'https://res.cloudinary.com/dyaycvndv/image/upload/v1687435781/Wada_Art/28_txcbda.jpg',
     description:
       'A captivating exploration of beauty found in the essence of simplicity.',
     category: 'Pigment liner',
@@ -76,7 +76,7 @@ export const artworks = [
   {
     id: 10,
     name: 'Stillness Unveiled',
-    url: 'https://res.cloudinary.com/dyaycvndv/image/upload/v1687435780/Wada_Art/25_aujkyq.jpg',
+    url: 'https://res.cloudinary.com/dyaycvndv/image/upload/v1687435782/Wada_Art/1_stowse.jpg',
     description:
       'The unveiling of quietude, capturing the beauty of undisturbed stillness.',
     category: 'Pigment liner',

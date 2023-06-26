@@ -23,29 +23,38 @@ export default function LoginForm(props: Props) {
     });
 
     const data: LoginResponseBodyPost = await response.json();
-
     if ('error' in data) {
       setError(data.error);
       console.log(data.error);
       return;
     }
+    console.log({ response });
 
-    router.push(
-      getSafeReturnToPath(props.returnTo) ||
-        (`/profile/${data.user.username}` as Route),
-    );
-    // we may have in the future revalidatePath()
-    router.refresh();
+    if ('user' in data) {
+      router.push(
+        getSafeReturnToPath(props.returnTo) ||
+          (`/profile/${data.user.username}` as Route),
+      );
+      router.refresh();
+      return;
+    }
   }
+  //   router.push(
+  //     getSafeReturnToPath(props.returnTo) ||
+  //       (`/profile/${data.user.username}` as Route),
+  //   );
+  //   // we may have in the future revalidatePath()
+  //   router.refresh();
+  // }
 
   return (
     <div className={styles.loginContainer}>
       <div className={styles.form}>
-        <h4 className={styles.titel}>Please, login.</h4>
+        <h4 className={styles.title}>Please, login.</h4>
 
         <form
-          onSubmit={(event) => event.preventDefault()}
           className={styles.loginForm}
+          onSubmit={(event) => event.preventDefault()}
         >
           <div>
             <label htmlFor="username">Username:</label>
@@ -69,15 +78,15 @@ export default function LoginForm(props: Props) {
             log in
           </button>
           {error !== '' && <div className={styles.error}>{error}</div>}
+          <div className={styles.signupContainer}>
+            <p>
+              Don't have an account yet?
+              <Link href="/register" className={styles.registerLink}>
+                Register here
+              </Link>
+            </p>
+          </div>
         </form>
-      </div>
-      <div className={styles.signupContainer}>
-        <p>
-          Don't have an account yet?
-          <Link href="/register" className={styles.registerLink}>
-            Register here
-          </Link>
-        </p>
       </div>
     </div>
   );
