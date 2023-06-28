@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 export default async function ArtworksPage() {
   const artworks = await getArtworks();
   return (
-    <main className={styles.main}>
+    <main>
       <section className={styles.productsContainer}>
         {artworks.map((artwork) => {
           console.log(artwork);

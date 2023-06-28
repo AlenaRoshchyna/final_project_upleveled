@@ -32,6 +32,7 @@
         input {
           width: 100%;
           height: 40px;
+          padding-left: 10px;
         }
       }
     }
@@ -88,4 +89,14 @@
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   margin-bottom: 25px;
+}
+
+.showPasswordButton {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 54%;
+  right: 10%;
+  transform: translate(0%, -50%);
+  cursor: pointer;
 }

@@ -4,6 +4,7 @@ import { Route } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
 import { getSafeReturnToPath } from '../../util/validation';
 import styles from './LoginForm.module.scss';
@@ -13,6 +14,7 @@ type Props = { returnTo?: string | string[] };
 export default function LoginForm(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -32,20 +34,15 @@ export default function LoginForm(props: Props) {
 
     if ('user' in data) {
       router.push(
-        getSafeReturnToPath(props.returnTo) ||
-          (`/profile/${data.user.username}` as Route),
+        getSafeReturnToPath(props.returnTo) || (`/artworks` as Route),
       );
       router.refresh();
-      return;
+      // return;
     }
   }
-  //   router.push(
-  //     getSafeReturnToPath(props.returnTo) ||
-  //       (`/profile/${data.user.username}` as Route),
-  //   );
-  //   // we may have in the future revalidatePath()
-  //   router.refresh();
-  // }
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     <div className={styles.loginContainer}>
@@ -67,9 +64,15 @@ export default function LoginForm(props: Props) {
             <label htmlFor="username">Password:</label>
             <input
               value={password}
-              type="password"
+              type={passwordShown ? 'text' : 'password'}
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
+            <button
+              onClick={togglePassword}
+              className={styles.showPasswordButton}
+            >
+              {passwordShown ? <RxEyeOpen /> : <RxEyeClosed />}
+            </button>
           </div>
           <button
             className={styles.loginSubmit}

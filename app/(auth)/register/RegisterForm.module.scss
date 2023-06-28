@@ -88,3 +88,13 @@
   background-color: rgb(255, 255, 255);
   margin-bottom: 15px;
 }
+
+.showPasswordButton {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 45%;
+  right: 10%;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+}

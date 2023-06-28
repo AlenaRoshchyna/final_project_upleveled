@@ -1,8 +1,10 @@
 'use client';
 
+import { Route } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
 import styles from './RegisterForm.module.scss';
 
@@ -11,7 +13,12 @@ export default function RegisterForm() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
   const router = useRouter();
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   async function register() {
     const response = await fetch('/api/register', {
@@ -27,7 +34,7 @@ export default function RegisterForm() {
     }
 
     console.log(data.user);
-    router.push(`/profile/${data.user.username}`);
+    router.push(`/artworks` as Route);
     // we may have in the future revalidatePath()
     router.refresh();
   }
@@ -51,8 +58,16 @@ export default function RegisterForm() {
             <label htmlFor="username">Password:</label>
             <input
               value={password}
+              type={passwordShown ? 'text' : 'password'}
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
+
+            <button
+              onClick={togglePassword}
+              className={styles.showPasswordButton}
+            >
+              {passwordShown ? <RxEyeOpen /> : <RxEyeClosed />}
+            </button>
           </div>
           <div>
             <label htmlFor="e-mail">E-mail:</label>
