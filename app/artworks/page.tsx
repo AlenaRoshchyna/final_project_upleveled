@@ -1,3 +1,4 @@
+import { Almendra } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getArtworks } from '../../database/artworks';
@@ -5,10 +6,12 @@ import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
 
-// export const metadata = {
-//   title: 'Dreams to buy',
-//   description: 'Products',
-// };
+const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
+
+export const metadata = {
+  title: 'Mora-Art',
+  description: 'Gallery',
+};
 
 export default async function ArtworksPage() {
   const artworks = await getArtworks();
@@ -16,7 +19,7 @@ export default async function ArtworksPage() {
     <main>
       <section className={styles.productsContainer}>
         {artworks.map((artwork) => {
-          console.log(artwork);
+          // console.log(artwork);
           return (
             <div key={`artwork-div-${artwork.id}`}>
               <Link href={`/artworks/${artwork.id}`}>
@@ -32,7 +35,14 @@ export default async function ArtworksPage() {
                 />
               </Link>
               <br />
-              <Link href={`/artworks/${artwork.id}`}>{artwork.name}</Link>
+              <div className={styles.name}>
+                <Link
+                  className={almendra.className}
+                  href={`/artworks/${artwork.id}`}
+                >
+                  {artwork.name}
+                </Link>
+              </div>
             </div>
           );
         })}

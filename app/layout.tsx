@@ -1,5 +1,5 @@
 import './globals.css';
-import { Almendra } from 'next/font/google';
+import { Alegreya, Almendra } from 'next/font/google';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +9,10 @@ import { LogoutButton } from './components/LogoutButton';
 import styles from './layout.module.scss';
 
 const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
+const alegreya = Alegreya({
+  weight: ['400', '700', '500', '600', '800', '900'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: 'Wada-Art',
@@ -53,7 +57,9 @@ export default async function RootLayout({ children }: Props) {
 
             {user ? (
               <>
-                <div className={styles.username}>{user.username}</div>
+                <div className={styles.username}>
+                  <span className={alegreya.className}>{user.username}</span>
+                </div>
                 <LogoutButton />
               </>
             ) : (

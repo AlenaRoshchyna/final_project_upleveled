@@ -8,6 +8,18 @@ export type WishlistSubmit = {
   artworkId: number;
 };
 
+export type WishlistByUser = {
+  wishlistId: number;
+  name: string;
+  description: string;
+  category: string;
+  url: string;
+  userId: number;
+  username: string;
+  id: number;
+  artworkId: number;
+};
+
 export const getWishlists = cache(async () => {
   const wishlists = await sql<Wishlist[]>`
     SELECT * FROM wishlists
@@ -44,12 +56,16 @@ export const submitWishlist = cache(
   },
 );
 
-export const getWishlistByUserIdAndSessionToken = cache(
-  async (userId: number) => {
-    const wishlist = await sql<Wishlist[]>`
+export const getWishlistByUser = cache(async (userId: number) => {
+  console.log('database', userId);
+  const wishlistWithUser = await sql<WishlistByUser[]>`
      SELECT
-      wishlists.*,
-      artworks.*,
+      wishlists.id,
+      artworks.id,
+      artworks.name,
+      artworks.description,
+      artworks.category,
+      artworks.url,
       users.username
     FROM
       wishlists
@@ -57,19 +73,13 @@ export const getWishlistByUserIdAndSessionToken = cache(
     INNER JOIN
       artworks ON (
       wishlists.artwork_id = artworks.id
-      )
+  )
     INNER JOIN
-    users ON (
-     users.id = ${userId}
-     )
+      users ON (
+      users.id = ${userId} AND
+      wishlists.user_id = users.id)
+
     `;
 
-    return wishlist;
-  },
-);
-
-// -- INNER JOIN
-// --   sessions ON (
-// --     sessions.token = ${token} AND
-// --     sessions.expiry_timestamp > now()
-// --   )
+  return wishlistWithUser;
+});

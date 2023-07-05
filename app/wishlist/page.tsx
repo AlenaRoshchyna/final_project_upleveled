@@ -1,38 +1,54 @@
 import { cookies } from 'next/headers';
-// import { notFound } from 'next/navigation';
-import { getUserBySessionToken } from '../../database/users';
-import { getWishlistByUserIdAndSessionToken } from '../../database/wishlists';
-import styles from './page.module.scss';
+import { redirect } from 'next/navigation';
+import { getUserBySessionToken, getUserByUsername } from '../../database/users';
+import { getWishlistByUser } from '../../database/wishlists';
+import DeleteWishlists from './DeleteWishlists';
+import styles from './MyWishlist.module.scss';
+import MyWishlists from './MyWishlists';
 
-type Props = {
-  params: { userId: number; artworkId: number };
-};
+// import styles from './page.module.scss';
 
-export default async function WishlistPage({ params }: Props) {
+// export const dynamic = 'force-dynamic';
+
+export default async function WishlistPage() {
   const cookieStore = cookies();
   const sessionToken = cookieStore.get('sessionToken');
 
-  const user = !sessionToken?.value
+  const currentUser = !sessionToken?.value
     ? undefined
     : await getUserBySessionToken(sessionToken.value);
 
-  // Check the result of this console.log in your VSCode and show me
-  console.log('logged in User:', user);
+  console.log('current User:', currentUser);
 
-  const wishlists = await getWishlistByUserIdAndSessionToken(user.id);
+  // for watching your wishlist, please login
+  if (!sessionToken) {
+    return redirect(`/login`);
+  }
 
-  // Check the result of this console.log in your VSCode and show me
-  console.log('WishLists: ', wishlists);
+  const user = await getUserByUsername(currentUser!.username);
+  // console.log('logged in User:', user);
 
-  // if (!wishlist) {
-  //   notFound();
-  // }
+  if (!user) {
+    return redirect(`/login?returnTo=/${user!.username}`);
+  }
+
+  const wishlists = await getWishlistByUser(user.id);
+
+  // console.log('WishLists: ', wishlists);
 
   return (
-    <main className={styles.id}>
-      {/* <div>id: {wishlist.id}</div>
-      <div>artwork: {wishlist.userId}</div>
-      <div>artwork: {wishlist.artworkId}</div> */}
-    </main>
+    <>
+      <h1 className={styles.h1}>
+        {user.username.toUpperCase()}'s favourite artworks
+      </h1>
+      <section>
+        {wishlists.length === 0 ? (
+          <p>Wishlist is empty</p>
+        ) : (
+          <MyWishlists wishlists={wishlists} />
+        )}
+        {/* <DeleteWishlists /> */}
+      </section>
+    </>
   );
 }

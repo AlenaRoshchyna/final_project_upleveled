@@ -8,3 +8,11 @@
   min-height: 95vh;
   margin-bottom: 50px;
 }
+.name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: large;
+  margin-top: 10px;
+  gap: 1.5px;
+}

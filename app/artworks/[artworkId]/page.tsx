@@ -46,7 +46,7 @@ export default async function ArtworkPage(props: Props) {
       />
       <WishlistButton userId={user?.id} artworkId={singleArtwork.id} />
 
-      <div>
+      <div className={styles.name}>
         <p>Name: {singleArtwork.name}</p>
         <p>Description: {singleArtwork.description}</p>
         <p>Category: {singleArtwork.category}</p>

@@ -1,6 +1,7 @@
 'use client';
 
 import { Route } from 'next';
+import { Alegreya_SC } from 'next/font/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -8,6 +9,11 @@ import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
 import { getSafeReturnToPath } from '../../util/validation';
 import styles from './LoginForm.module.scss';
+
+const alegreya = Alegreya_SC({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+});
 
 type Props = { returnTo?: string | string[] };
 
@@ -45,6 +51,7 @@ export default function LoginForm(props: Props) {
   };
 
   return (
+    // {alegreya.className}
     <div className={styles.loginContainer}>
       <div className={styles.form}>
         <h4 className={styles.title}>Please, login.</h4>

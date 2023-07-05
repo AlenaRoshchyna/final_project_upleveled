@@ -6,6 +6,16 @@ type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
+export const getUsers = cache(async () => {
+  const users = await sql<UserWithPasswordHash[]>`
+  SELECT
+    *
+  FROM
+    users
+  `;
+  return users;
+});
+
 export const getUserWithPasswordHashByUsername = cache(
   async (username: string) => {
     const [user] = await sql<UserWithPasswordHash[]>`
@@ -20,6 +30,7 @@ export const getUserWithPasswordHashByUsername = cache(
 );
 
 export const getUserByUsername = cache(async (username: string) => {
+  console.log('database', username);
   const [user] = await sql<User[]>`
     SELECT
       id,
@@ -37,6 +48,7 @@ export const getUserByUsername = cache(async (username: string) => {
 export const createUser = cache(
   async (username: string, passwordHash: string, email: string) => {
     console.log(passwordHash);
+
     const [user] = await sql<User[]>`
     INSERT INTO users
       (username, password_hash, email)
@@ -51,6 +63,18 @@ export const createUser = cache(
     return user;
   },
 );
+
+export const getUserById = cache(async (id: number) => {
+  const [user] = await sql<UserWithPasswordHash[]>`
+    SELECT
+      *
+    FROM
+      users
+    WHERE
+      id = ${id}
+  `;
+  return user;
+});
 
 export const getUserBySessionToken = cache(async (token: string) => {
   const [user] = await sql<User[]>`
