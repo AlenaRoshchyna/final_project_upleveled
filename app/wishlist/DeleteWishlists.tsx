@@ -1,21 +1,27 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Wishlist } from '../../migrations/1687869188-createTableWishlist';
+import styles from './MyWishlist.module.scss';
 
 type Props = {
-  wishlist: Wishlist;
+  wishlists: {
+    userId: number;
+    id: number;
+  };
 };
 
 export default function DeleteWishlists(props: Props) {
-  const [error, setError] = useState();
+  console.log(props);
+  const [error, setError] = useState('');
   const router = useRouter();
 
   return (
-    <>
+    <div>
       <button
+        className={styles.deleteButton}
         onClick={async () => {
-          const response = await fetch(`/api/wishlists/${props.wishlist.id}`, {
+          const response = await fetch(`/api/wishlists/${props.wishlists}`, {
             method: 'DELETE',
           });
 
@@ -23,15 +29,30 @@ export default function DeleteWishlists(props: Props) {
 
           if (data.error) {
             setError(data.error);
+            console.log(error);
+            router.refresh();
             return;
           }
-
           router.refresh();
         }}
       >
-        Delete
+        X
       </button>
-      <div>{error}</div>
-    </>
+    </div>
   );
 }
+// type Props = {
+//   deleteId: number;
+// };
+
+// export default function DeleteWishlists(props: Props) {
+//   return (
+//     <button
+//       onClick={async () => {
+//         await deleteWishlistById(props.deleteId);
+//       }}
+//     >
+//       Delete
+//     </button>
+//   );
+// }

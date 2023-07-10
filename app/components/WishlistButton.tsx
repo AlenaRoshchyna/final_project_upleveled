@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { WishlistResponseBodyPost } from '../api/wishlists/route';
 import styles from './WishlistButton.module.scss';
@@ -11,6 +12,7 @@ type Props = {
 export default function WishlistButton({ userId, artworkId }: Props) {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const router = useRouter();
 
   async function createWishlist() {
     const response = await fetch('/api/wishlists', {
@@ -28,6 +30,7 @@ export default function WishlistButton({ userId, artworkId }: Props) {
     } else {
       setSuccessMessage('Added to wish list!');
     }
+    router.refresh();
   }
 
   async function handleSubmit() {
@@ -36,7 +39,9 @@ export default function WishlistButton({ userId, artworkId }: Props) {
 
   return (
     <div>
-      <button onClick={handleSubmit}>Wishlist</button>
+      <button className={styles.button} onClick={handleSubmit}>
+        Wishlist
+      </button>
       {error !== '' && <div>{error}</div>}
       {successMessage !== '' && <div>{successMessage}</div>}
     </div>

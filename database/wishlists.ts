@@ -60,7 +60,7 @@ export const getWishlistByUser = cache(async (userId: number) => {
   console.log('database', userId);
   const wishlistWithUser = await sql<WishlistByUser[]>`
      SELECT
-      wishlists.id,
+      wishlists.id AS wishlist,
       artworks.id,
       artworks.name,
       artworks.description,
@@ -82,4 +82,15 @@ export const getWishlistByUser = cache(async (userId: number) => {
     `;
 
   return wishlistWithUser;
+});
+
+export const deleteWishlistById = cache(async (id: number) => {
+  const [wishlist] = await sql<Wishlist[]>`
+    DELETE FROM
+      wishlists
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return wishlist;
 });

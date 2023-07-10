@@ -1,4 +1,4 @@
-import { Almendra } from 'next/font/google';
+import { Alegreya } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getArtworks } from '../../database/artworks';
@@ -6,7 +6,10 @@ import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
 
-const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
+const alegreya = Alegreya({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: 'Mora-Art',
@@ -37,7 +40,7 @@ export default async function ArtworksPage() {
               <br />
               <div className={styles.name}>
                 <Link
-                  className={almendra.className}
+                  className={alegreya.className}
                   href={`/artworks/${artwork.id}`}
                 >
                   {artwork.name}

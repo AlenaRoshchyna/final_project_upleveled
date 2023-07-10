@@ -1,3 +1,4 @@
+import { Alegreya } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getUserBySessionToken, getUserByUsername } from '../../database/users';
@@ -5,6 +6,11 @@ import { getWishlistByUser } from '../../database/wishlists';
 import DeleteWishlists from './DeleteWishlists';
 import styles from './MyWishlist.module.scss';
 import MyWishlists from './MyWishlists';
+
+const alegreya = Alegreya({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
 
 // import styles from './page.module.scss';
 
@@ -34,12 +40,13 @@ export default async function WishlistPage() {
 
   const wishlists = await getWishlistByUser(user.id);
 
-  // console.log('WishLists: ', wishlists);
+  console.log('WishLists: ', wishlists);
 
   return (
     <>
-      <h1 className={styles.h1}>
-        {user.username.toUpperCase()}'s favourite artworks
+      <h1 className={`${styles.h1} ${alegreya.className}`}>
+        {user.username.charAt(0).toUpperCase() + user.username.slice(1)}'s
+        favourite artworks
       </h1>
       <section>
         {wishlists.length === 0 ? (
@@ -47,7 +54,6 @@ export default async function WishlistPage() {
         ) : (
           <MyWishlists wishlists={wishlists} />
         )}
-        {/* <DeleteWishlists /> */}
       </section>
     </>
   );

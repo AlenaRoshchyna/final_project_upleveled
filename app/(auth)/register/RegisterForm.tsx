@@ -1,12 +1,18 @@
 'use client';
 
 import { Route } from 'next';
+import { Alegreya } from 'next/font/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
 import styles from './RegisterForm.module.scss';
+
+const alegreya = Alegreya({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
 
 export default function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -34,13 +40,13 @@ export default function RegisterForm() {
     }
 
     console.log(data.user);
-    router.push(`/artworks` as Route);
+    router.push(`/` as Route);
     // we may have in the future revalidatePath()
     router.refresh();
   }
 
   return (
-    <div className={styles.loginContainer}>
+    <div className={`${styles.loginContainer} ${alegreya.className}`}>
       <div className={styles.form}>
         <h4 className={styles.title}>Please, register.</h4>
         <form

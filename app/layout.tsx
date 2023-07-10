@@ -58,7 +58,10 @@ export default async function RootLayout({ children }: Props) {
             {user ? (
               <>
                 <div className={styles.username}>
-                  <span className={alegreya.className}>{user.username}</span>
+                  <span className={alegreya.className}>
+                    {user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}
+                  </span>
                 </div>
                 <LogoutButton />
               </>
@@ -74,7 +77,7 @@ export default async function RootLayout({ children }: Props) {
             )}
           </nav>
         </header>
-        <main>{children}</main>
+        {children}
         <footer className={styles.footer}>
           <ul className={almendra.className}>
             <li>

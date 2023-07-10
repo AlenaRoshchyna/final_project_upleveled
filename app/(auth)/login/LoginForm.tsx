@@ -1,7 +1,7 @@
 'use client';
 
 import { Route } from 'next';
-import { Alegreya_SC } from 'next/font/google';
+import { Alegreya } from 'next/font/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -10,8 +10,8 @@ import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
 import { getSafeReturnToPath } from '../../util/validation';
 import styles from './LoginForm.module.scss';
 
-const alegreya = Alegreya_SC({
-  weight: ['400', '500'],
+const alegreya = Alegreya({
+  weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 });
 
@@ -52,7 +52,7 @@ export default function LoginForm(props: Props) {
 
   return (
     // {alegreya.className}
-    <div className={styles.loginContainer}>
+    <div className={`${styles.loginContainer} ${alegreya.className}`}>
       <div className={styles.form}>
         <h4 className={styles.title}>Please, login.</h4>
 

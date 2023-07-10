@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { submitWishlist, WishlistSubmit } from '../../../database/wishlists';
 
-type Error = {
+export type Error = {
   error: string;
 };
 

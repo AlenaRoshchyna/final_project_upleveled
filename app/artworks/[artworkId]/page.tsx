@@ -1,3 +1,4 @@
+import { Alegreya } from 'next/font/google';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -12,6 +13,11 @@ export const metadata = {
   title: 'Explore Wada-Art',
   description: 'Wada-Art',
 };
+
+const alegreya = Alegreya({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
 
 type Props = {
   params: {
@@ -36,20 +42,33 @@ export default async function ArtworkPage(props: Props) {
 
   return (
     <main className={styles.productPage}>
-      <Image
-        src={singleArtwork.url}
-        alt="picture"
-        width={0}
-        sizes="100vw"
-        height={0}
-        style={{ width: '25%', height: 'auto' }}
-      />
-      <WishlistButton userId={user?.id} artworkId={singleArtwork.id} />
+      <div className={styles.productContainer}>
+        <div className={styles.imgContainer}>
+          <Image
+            className={styles.img}
+            src={singleArtwork.url}
+            alt="picture"
+            width={0}
+            sizes="100vw"
+            height={0}
+            style={{ width: '80%', height: 'auto' }}
+          />
+        </div>
 
-      <div className={styles.name}>
-        <p>Name: {singleArtwork.name}</p>
-        <p>Description: {singleArtwork.description}</p>
-        <p>Category: {singleArtwork.category}</p>
+        <div className={`${styles.infoContainer} ${alegreya.className}`}>
+          <div className={styles.nameDescription}>
+            <h1 className={styles.h1}>{singleArtwork.name}</h1>
+            <p className={styles.p}>{singleArtwork.description}</p>
+          </div>
+
+          <div className={styles.categoryButton}>
+            {/* <p className={styles.content}>{singleArtwork.category}</p> */}
+            <WishlistButton
+              userId={user?.id}
+              artworkId={singleArtwork.id}
+            />{' '}
+          </div>
+        </div>
       </div>
     </main>
   );
