@@ -13,6 +13,11 @@ const alegreya = Alegreya({
   subsets: ['latin'],
 });
 
+export const metadata = {
+  title: 'Wada-Art',
+  description: 'World of Wada artist',
+};
+
 export default function Home() {
   return (
     <main className={styles.main}>

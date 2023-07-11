@@ -6,9 +6,10 @@ import ContactMeButton from '../components/ContactMeButton';
 import styles from './page.module.scss';
 
 export const metadata = {
-  title: 'Explore Wada-Art',
-  description: 'Wada-Art',
+  title: 'Contact Wada',
+  description: 'Wada-Art contact',
 };
+
 const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
 const alegreya = Alegreya({
   weight: ['400', '500', '600', '700', '800', '900'],

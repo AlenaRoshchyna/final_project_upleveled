@@ -12,9 +12,10 @@ const alegreya = Alegreya({
   subsets: ['latin'],
 });
 
-// import styles from './page.module.scss';
-
-// export const dynamic = 'force-dynamic';
+export const metadata = {
+  title: 'Your wishlist',
+  description: 'Favourite Wada artworks',
+};
 
 export default async function WishlistPage() {
   const cookieStore = cookies();
