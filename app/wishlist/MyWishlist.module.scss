@@ -54,29 +54,10 @@
     }
   }
 
-  // div {
-  //   div {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     gap: 10px;
-
-  //     p {
-  //       &:nth-child(1) {
-  //         font-weight: 700;
-  //       }
-  //     }
-  //   }
-  // }
-
   p {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
-    // span {
-    //   font-weight: bold;
-    // }
   }
 
   .img:hover {
@@ -84,5 +65,10 @@
   }
 }
 
-// .imgContainer {
-// }
+.empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  font-size: 1.5rem;
+  color: orangered;
+}

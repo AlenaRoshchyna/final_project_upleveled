@@ -3,7 +3,6 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getUserBySessionToken, getUserByUsername } from '../../database/users';
 import { getWishlistByUser } from '../../database/wishlists';
-import DeleteWishlists from './DeleteWishlists';
 import styles from './MyWishlist.module.scss';
 import MyWishlists from './MyWishlists';
 
@@ -51,7 +50,9 @@ export default async function WishlistPage() {
       </h1>
       <section>
         {wishlists.length === 0 ? (
-          <p>Wishlist is empty</p>
+          <p className={`${styles.empty} ${alegreya.className}`}>
+            ꧁ Wishlist is empty ꧂
+          </p>
         ) : (
           <MyWishlists wishlists={wishlists} />
         )}
