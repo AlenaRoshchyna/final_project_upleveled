@@ -33,7 +33,7 @@ export async function POST(
     // console.log(result.error);
     return NextResponse.json(
       {
-        error: 'The data is incomplete',
+        error: 'Please, register or log in.',
       },
       { status: 400 },
     );

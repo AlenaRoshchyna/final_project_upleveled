@@ -1,0 +1,13 @@
+.likeButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  .heartButton {
+    font-size: 2rem;
+  }
+
+  .heartButtonRed {
+    color: orangered;
+  }
+}

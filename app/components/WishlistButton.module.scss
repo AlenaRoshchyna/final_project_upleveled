@@ -1,9 +1,26 @@
-.button {
+.container {
   display: flex;
-  border-width: 0.5px;
+  flex-direction: row;
 
-  box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.25);
-  padding: 10px 40px;
+  .button {
+    display: flex;
+    flex-direction: row;
+    border-width: 0.5px;
+    font-size: 1.25rem;
+    box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px 30px;
 
-  align-items: center;
+    &:hover {
+      border: 1px solid #8f7e7e;
+      background-color: rgb(245, 245, 245);
+      color: #665656;
+      cursor: pointer;
+    }
+
+    .response {
+      color: orangered;
+      font-size: 1.15rem;
+      margin: 12px 0px 0px 20px;
+    }
+  }
 }

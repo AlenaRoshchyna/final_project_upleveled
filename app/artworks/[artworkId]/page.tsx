@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getArtworkById } from '../../../database/artworks';
 import { getUserBySessionToken } from '../../../database/users';
+import LikeButton from '../../components/LikeButton';
 import WishlistButton from '../../components/WishlistButton';
 import styles from './page.module.scss';
 
@@ -57,16 +58,14 @@ export default async function ArtworkPage(props: Props) {
 
         <div className={`${styles.infoContainer} ${alegreya.className}`}>
           <div className={styles.nameDescription}>
-            <h1 className={styles.h1}>{singleArtwork.name}</h1>
+            <div>
+              <h1 className={styles.h1}>{singleArtwork.name}</h1> <LikeButton />
+            </div>
             <p className={styles.p}>{singleArtwork.description}</p>
           </div>
 
           <div className={styles.categoryButton}>
-            {/* <p className={styles.content}>{singleArtwork.category}</p> */}
-            <WishlistButton
-              userId={user?.id}
-              artworkId={singleArtwork.id}
-            />{' '}
+            <WishlistButton userId={user?.id} artworkId={singleArtwork.id} />
           </div>
         </div>
       </div>

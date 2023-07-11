@@ -1,8 +1,11 @@
 'use client';
+import { Almendra } from 'next/font/google';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { WishlistResponseBodyPost } from '../api/wishlists/route';
 import styles from './WishlistButton.module.scss';
+
+const almendra = Almendra({ weight: ['400', '700'], subsets: ['latin'] });
 
 type Props = {
   userId: number | undefined;
@@ -28,7 +31,7 @@ export default function WishlistButton({ userId, artworkId }: Props) {
     if ('error' in data) {
       setError(data.error);
     } else {
-      setSuccessMessage('Added to wish list!');
+      setSuccessMessage('Added to your Wishlist!');
     }
     router.refresh();
   }
@@ -38,12 +41,17 @@ export default function WishlistButton({ userId, artworkId }: Props) {
   }
 
   return (
-    <div>
-      <button className={styles.button} onClick={handleSubmit}>
+    <div className={styles.container}>
+      <button
+        className={`${almendra.className} ${styles.button}`}
+        onClick={handleSubmit}
+      >
         Wishlist
       </button>
-      {error !== '' && <div>{error}</div>}
-      {successMessage !== '' && <div>{successMessage}</div>}
+      <div className={`${almendra.className} ${styles.response}`}>
+        {error !== '' && <div>{error}</div>}
+        {successMessage !== '' && <div>{successMessage}</div>}
+      </div>
     </div>
   );
 }

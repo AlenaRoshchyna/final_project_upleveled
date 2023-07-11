@@ -1,0 +1,36 @@
+.main {
+  margin-top: 100px;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      margin: 0px 0px 30px 0px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin: 0px 150px 30px 150px;
+      display: flex;
+      text-align: justify;
+    }
+  }
+
+  .img {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+}
