@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: Props) {
               </Link>
             </div>
 
-            <ul className={almendra.className}>
+            <ul className={`${almendra.className} ${styles.firstUl}`}>
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -66,12 +66,16 @@ export default async function RootLayout({ children }: Props) {
                 <LogoutButton />
               </>
             ) : (
-              <ul className={almendra.className}>
+              <ul className={`${almendra.className} ${styles.secondUl}`}>
                 <li>
-                  <Link href="/register">Register</Link>
+                  <Link href="/register" className={styles.register}>
+                    Register
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/login">Log in</Link>
+                  <Link href="/login" className={styles.login}>
+                    Log in
+                  </Link>
                 </li>
               </ul>
             )}
@@ -81,7 +85,7 @@ export default async function RootLayout({ children }: Props) {
         <footer className={styles.footer}>
           <ul className={almendra.className}>
             <li>
-              <Link href="/about">About me</Link>
+              <Link href="/about">About the artist</Link>
             </li>
             <li>
               <Link href="/contact">Contact</Link>

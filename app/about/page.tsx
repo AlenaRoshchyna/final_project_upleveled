@@ -19,22 +19,22 @@ export default function AboutPage() {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={`${styles.text} ${alegreya.className}`}>
-          <h1 className={almendra.className}>About me</h1>
+          <h1 className={almendra.className}>About the artist</h1>
 
           <p className={alegreya.className}>
-            I am a passionate artist specializing in both tattooing and
+            Wada is a passionate artist specializing in both tattooing and
             painting, dedicated to creating captivating and meaningful works of
-            art. With a brush or a tattoo machine in hand, I embark on a
-            creative journey that allows me to express my unique vision and
+            art. With a brush or a tattoo machine in hand, she embarks on a
+            creative journey that allows her to express her unique vision and
             connect with others on a profound level.
           </p>
           <p>
-            In the world of tattoos, I have honed my craft to transform skin
+            In the world of tattoos, she has honed her craft to transform skin
             into a canvas that tells stories, captures emotions, and preserves
-            memories. Each stroke of ink is infused with intention, as I
-            collaborate closely with my clients to bring their ideas to life.
+            memories. Each stroke of ink is infused with intention, as she
+            collaborates closely with her clients to bring their ideas to life.
             Whether it's a small, intricate design or a larger, intricate
-            masterpiece, I strive to ensure that every tattoo reflects their
+            masterpiece, she strives to ensure that every tattoo reflects their
             individuality and resonates with their soul.
           </p>
         </div>

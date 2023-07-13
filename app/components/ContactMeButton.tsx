@@ -12,7 +12,7 @@ export default function ContactMeButton() {
       className={`${almendra.className} ${styles.contactMeButton}`}
       href="mailto:abc@example.com?subject = Feedback&body = Message"
     >
-      Contact me
+      Contact the artist
     </Link>
   );
 }

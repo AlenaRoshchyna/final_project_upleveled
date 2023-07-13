@@ -1,5 +1,6 @@
 import { Alegreya, Almendra } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 import distro from '../public/distro.jpg';
 import landingImage from '../public/landingImage.jpg';
 import visitGallery from '../public/visitGallery.jpg';
@@ -21,16 +22,26 @@ export const metadata = {
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div>
-        <Image
-          src={landingImage}
-          alt="Painting"
-          width={0}
-          sizes="100vw"
-          height={0}
-          style={{ width: '100%', height: 'auto' }}
-        />
+      <div className={styles.imgContainer}>
+        <Link
+          className={`${almendra.className} ${styles.exploreMore}`}
+          href="#anchor_one"
+        >
+          Explore more
+        </Link>
+
+        <div>
+          <Image
+            src={landingImage}
+            alt="Painting"
+            width={0}
+            sizes="100vw"
+            height={0}
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
       </div>
+      <div id="anchor_one" />
       <div className={styles.gallery}>
         <Image
           src={visitGallery}
@@ -53,7 +64,7 @@ export default function Home() {
               to rock the new Distro look? Are you a popular musician and dream
               to have the most special looking instrument? If yes, you are on
               the right way to get it.{' '}
-              <span>Do not hesitate to contact me!</span>
+              <span>Do not hesitate to contact the artist!</span>
             </p>
           </div>
 

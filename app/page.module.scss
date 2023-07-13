@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-top: 80px;
   width: 100%;
-  gap: 100px;
+  gap: 60px;
   margin-bottom: 80px;
 
   div {
@@ -54,6 +54,38 @@
     .contactMeContainer {
       display: flex;
       align-items: center;
+    }
+  }
+}
+
+.imgContainer {
+  position: relative;
+
+  .exploreMore {
+    display: flex;
+    position: absolute;
+    bottom: 7%;
+    right: 40%;
+
+    cursor: pointer;
+    text-decoration: none;
+    justify-content: center;
+    align-content: center;
+    color: #000000;
+    padding: 10px 6px 10px 6px;
+    border-radius: 15px 50px 30px;
+    background: #f0df95;
+    width: 300px;
+    height: 55px;
+    font-size: 1.75rem;
+    text-align: center;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    border: 0.25px solid rgb(50, 49, 49);
+
+    &:hover {
+      background: #ffffff;
+      color: #000000;
+      border: none;
     }
   }
 }

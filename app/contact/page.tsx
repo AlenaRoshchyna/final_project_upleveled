@@ -48,23 +48,23 @@ export default function ContactPage() {
         <div className={`${styles.infoContainer} ${alegreya.className}`}>
           <div className={styles.nameDescription}>
             <p>
-              My artistic journey is one of continuous growth and exploration,
-              fueled by curiosity and a deep appreciation for the transformative
-              power of art. I am constantly seeking new techniques, studying
-              diverse artistic traditions, and pushing the boundaries of my
-              creativity.
+              Wada's artistic journey is one of continuous growth and
+              exploration, fueled by curiosity and a deep appreciation for the
+              transformative power of art. She is constantly seeking new
+              techniques, studying diverse artistic traditions, and pushing the
+              boundaries of her creativity.
             </p>
             <p>
-              As an artist, my ultimate goal is to touch hearts, ignite
+              As an artist, her ultimate goal is to touch hearts, ignite
               imagination, and leave a lasting impression on those who encounter
-              my work. Whether it's adorning the skin or adorning a wall, I
-              believe that art has the power to inspire, heal, and connect
+              her work. Whether it's adorning the skin or adorning a wall, she
+              believes that art has the power to inspire, heal, and connect
               people from all walks of life.
             </p>{' '}
             <p>
-              Thank you for joining me on this artistic adventure. Together, let
-              us explore the beauty and depth of art, embracing the stories and
-              emotions that art has the power to evoke.
+              Thank you for joining her on this artistic adventure. Together,
+              let us explore the beauty and depth of art, embracing the stories
+              and emotions that art has the power to evoke.
             </p>
           </div>
 
