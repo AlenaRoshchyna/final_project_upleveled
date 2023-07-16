@@ -1,16 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Final Project <em>Wada-Art</em> ⚡
+<h6>Landing page.</h6>h6>
+![Landing page WadaArt](https://github.com/AlenaRoshchyna/images-in-readme/assets/127998032/8b6b29e5-f311-4df5-a692-24ebb8fb06a9)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+
+
+
+jsjldvbldjbv
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
