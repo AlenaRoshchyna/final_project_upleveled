@@ -1,4 +1,4 @@
-## Final Project ⚡ <em>Wada-Art</em> ⚡
+## Final Project ⚡ [<em>Wada-Art</em>](https://final-project-upleveled.vercel.app/) ⚡
 <h6>Landing page</h6>
 
 <img src= "https://github.com/AlenaRoshchyna/final_project_upleveled/assets/127998032/092215b8-f438-4960-89ad-478630242fd3" width="500"> 
